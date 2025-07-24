@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-Shalla - Digital Library</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="menu-btn" id="menu-btn">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
+            <h1 class="logo">E-Shalla</h1>
+            <div class="search-container">
+                <input type="text" placeholder="Search books..." id="search-input">
+                <button id="search-btn"><i class="fas fa-search"></i></button>
+            </div>
+        </header>
+
+        <aside class="sidebar" id="sidebar">
+            <nav>
+                <ul class="categories">
+                    
+                    <li><a href="philosophy.html">Philosophy</a></li>
+                    <li><a href="science.html">Science</a></li>
+                    <li><a href="psychology.html">Psychology</a></li>
+                    <li><a href="self-help.html">Self Help</a></li>
+                    <li><a href="fiction.html">Fiction</a></li>
+                    <li><a href="computer-science.html">Computer Science</a></li>
+                    <li><a href="history.html">History</a></li>
+                    <li><a href="biography.html">Biography</a></li>
+                    <li><a href="literature.html">Literature</a></li>
+                    <li><a href="quantum.html">Quantum Mechanics</a></li>
+                  
+                </ul>
+            </nav>
+            <div class="sidebar-footer">
+                <p>E-Shalla - Opens Door of Knowledge for Everyone</p>
+            </div>
+        </aside>
+
+        <main class="content">
+            <h2 class="section-title">Featured Books</h2>
+            <div class="books-container">
+                <!-- Featured Book 1 -->
+                <div class="book-card">
+                    <div class="book-cover">
+                        <img src="https://m.media-amazon.com/images/I/71F1+VkDnVL._AC_UF1000,1000_QL80_.jpg" alt="Meditations">
+                    </div>
+                    <div class="book-info">
+                        <h3 class="book-title">Meditations</h3>
+                        <p class="book-author">Marcus Aurelius</p>
+                        <p class="book-category">Philosophy</p>
+                        <div class="book-actions">
+                            <a href="books/meditations.pdf" download class="download-btn">Download</a>
+                            <a href="reader.html?book=meditations" target="_blank" class="read-btn">Read</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Featured Book 2 -->
+                <div class="book-card">
+                    <div class="book-cover">
+                        <img src="https://m.media-amazon.com/images/I/81zqVEGZ5ZL._AC_UF1000,1000_QL80_.jpg" alt="The Analects">
+                    </div>
+                    <div class="book-info">
+                        <h3 class="book-title">The Analects</h3>
+                        <p class="book-author">Confucius</p>
+                        <p class="book-category">Philosophy</p>
+                        <div class="book-actions">
+                            <a href="books/analects.pdf" download class="download-btn">Download</a>
+                            <a href="reader.html?book=analects" target="_blank" class="read-btn">Read</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 7 more featured books in same format -->
+            </div>
+        </main>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>  
