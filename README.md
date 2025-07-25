@@ -1,8 +1,9 @@
 # 📚 E-Shalla – Online Book Library
 
-Welcome to **E-Shalla**, a simple and elegant web-based digital book library. The platform offers free access to curated books across various genres including Philosophy, Science, Psychology, Self-Help, Fiction, History, and more.
+Welcome to **E-Shalla**, a simple and elegant web-based digital book library. The platform offers free access to curated books across various genres including Philosophy, Science, Psychology, Self-Help, Fiction, History, and more. Check for daily updates
 
-🌐 **Live Website:** [https://e-shalla.vercel.app] (https://e-shalla.vercel.app)
+
+🌐 **Live Website:** [https://e-shalla.vercel.app]
 
 ---
 
