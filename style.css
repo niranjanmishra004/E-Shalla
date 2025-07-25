@@ -260,17 +260,22 @@ header {
 }
 
 .book-cover {
-  height: 220px;
+  height: 280px;
   background-color: var(--gray-light);
   position: relative;
   overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .book-cover img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+  width: 80%;
+  height: 90%;
+  object-fit: contain;
   transition: transform 0.5s ease;
+  border-radius: 4px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
 }
 
 .book-card:hover .book-cover img {
@@ -387,10 +392,21 @@ header {
 }
 
 /* Responsive Design */
+@media (max-width: 1200px) {
+  .books-container {
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 1.8rem;
+  }
+}
+
 @media (max-width: 1024px) {
   .books-container {
     grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
     gap: 1.5rem;
+  }
+  
+  .content {
+    padding: 2rem;
   }
 }
 
@@ -407,6 +423,7 @@ header {
     height: calc(100vh - 70px);
     z-index: 100;
     transition: left 0.3s ease;
+    box-shadow: 2px 0 10px rgba(0,0,0,0.1);
   }
 
   .sidebar.active {
@@ -418,39 +435,103 @@ header {
   }
 
   .search-container {
-    width: 60%;
+    width: 50%;
+    min-width: 200px;
   }
 
   .content {
     padding: 1.5rem;
   }
+  
+  .books-container {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1.2rem;
+  }
 }
 
 @media (max-width: 576px) {
   header {
-    padding: 1rem;
+    padding: 0.8rem 1rem;
+    flex-wrap: wrap;
+    gap: 1rem;
   }
 
   .logo {
-    font-size: 1.5rem;
-    margin-right: 1rem;
+    font-size: 1.4rem;
+    margin-right: 0.5rem;
+    order: 2;
+  }
+  
+  .menu-btn {
+    order: 1;
   }
 
   .search-container {
     width: 100%;
-    margin-left: 1rem;
+    margin-left: 0;
+    order: 3;
+    flex-basis: 100%;
+  }
+  
+  .content {
+    padding: 1rem;
   }
 
   .books-container {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 1rem;
+  }
+  
+  .section-title {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
   }
 
   .book-actions {
     flex-direction: column;
+    gap: 0.5rem;
   }
 
   .download-btn, .read-btn {
     width: 100%;
+    padding: 0.6rem;
+  }
+  
+  .book-info {
+    padding: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .books-container {
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  }
+  
+  .book-cover {
+    height: 180px;
+  }
+  
+  .book-title {
+    font-size: 1rem;
+  }
+  
+  .content {
+    padding: 0.8rem;
+  }
+}
+
+@media (max-width: 360px) {
+  .books-container {
+    grid-template-columns: 1fr 1fr;
+    gap: 0.8rem;
+  }
+  
+  .book-cover {
+    height: 160px;
+  }
+  
+  .logo {
+    font-size: 1.2rem;
   }
 }
 
@@ -489,4 +570,88 @@ header {
 
 ::-webkit-scrollbar-thumb:hover {
   background: rgba(0,0,0,0.3);
+}
+
+/* Search Results */
+.no-results {
+  grid-column: 1 / -1;
+}
+
+/* Mobile Overlay for Sidebar */
+@media (max-width: 768px) {
+  .sidebar.active::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: -1;
+  }
+}
+
+/* Enhanced Mobile Menu Button Animation */
+.menu-btn.active .bar:nth-child(1) {
+  transform: translateY(10px) rotate(45deg);
+}
+
+.menu-btn.active .bar:nth-child(3) {
+  transform: translateY(-10px) rotate(-45deg);
+}
+
+/* Better touch targets for mobile */
+@media (max-width: 768px) {
+  .categories li a {
+    padding: 1rem 1.5rem;
+    font-size: 1rem;
+  }
+  
+  .download-btn, .read-btn {
+    min-height: 44px; /* iOS recommended touch target */
+  }
+  
+  #search-input {
+    font-size: 16px; /* Prevents zoom on iOS */
+  }
+  
+  #search-btn {
+    min-width: 44px;
+    min-height: 44px;
+  }
+}
+
+/* Improved book card hover on touch devices */
+@media (hover: none) and (pointer: coarse) {
+  .book-card:hover {
+    transform: none;
+  }
+  
+  .book-card:active {
+    transform: scale(0.98);
+  }
+}
+
+/* Loading states for search */
+.books-container.searching {
+  opacity: 0.7;
+  pointer-events: none;
+}
+
+/* Better focus states for accessibility */
+.categories li a:focus,
+.download-btn:focus,
+.read-btn:focus {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 2px;
+}
+
+/* Smooth transitions for search results */
+.book-card {
+  transition: var(--transition), opacity 0.3s ease, transform 0.3s ease;
+}
+
+.book-card[style*="display: none"] {
+  opacity: 0;
+  transform: scale(0.9);
 }
