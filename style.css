@@ -423,12 +423,39 @@ header {
     height: calc(100vh - 70px);
     z-index: 100;
     transition: left 0.3s ease;
-    box-shadow: 2px 0 10px rgba(0,0,0,0.1);
+    background-color: white;
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+    overflow-y: auto;
   }
 
   .sidebar.active {
     left: 0;
   }
+
+  /* Remove or replace the overlay if not needed */
+  .sidebar.active::before {
+    display: none; /* This removes the overlay completely */
+  }
+
+  /* Optional: Add a semi-transparent overlay behind the sidebar */
+  .sidebar-overlay {
+    position: fixed;
+    top: 70px;
+    left: 0;
+    width: 100vw;
+    height: calc(100vh - 70px);
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 99;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+  }
+
+  .sidebar-overlay.active {
+    opacity: 1;
+    pointer-events: auto;
+  }
+}
 
   .menu-btn {
     display: flex;
@@ -447,7 +474,6 @@ header {
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     gap: 1.2rem;
   }
-}
 
 @media (max-width: 576px) {
   header {
